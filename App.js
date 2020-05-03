@@ -8,6 +8,7 @@ import {
 } from "@react-navigation/stack";
 import Home from "./screens/Home";
 import About from "./screens/About";
+import Descriptions from "./screens/Descriptions";
 
 const Stack = createStackNavigator();
 
@@ -22,9 +23,14 @@ export default class App extends Component {
           }}
         >
           <Stack.Screen
-            options={{ headerShown: true, title: "My Home" }}
+            options={{ headerShown: true, title: "Ecommerce" }}
             name="Home"
             component={Home}
+          />
+          <Stack.Screen
+            options={{ headerShown: true }}
+            name="Description"
+            component={Descriptions}
           />
           <Stack.Screen
             options={{ headerShown: true }}
