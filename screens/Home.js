@@ -9,6 +9,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+import Bottombar from "../components/Bottombar";
 
 export default class Home extends Component {
   state = {
@@ -133,6 +134,7 @@ export default class Home extends Component {
           </View>
           {/* Products End */}
         </ScrollView>
+        <Bottombar navigation={this.props.navigation} />
       </SafeAreaView>
     );
   }

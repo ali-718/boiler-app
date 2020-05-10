@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Text, View, Image, TouchableOpacity } from "react-native";
+import { connect } from "react-redux";
+import { AddToWishlist } from "../actions/productsActions";
 
-export default class Descriptions extends Component {
+class Descriptions extends Component {
   componentDidMount() {
     const Product = this.props.route.params.product;
 
@@ -39,8 +41,30 @@ export default class Descriptions extends Component {
               Buy Now for Rs.{this.props.route.params.product.Price}
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              this.props.AddToWishlist(this.props.route.params.product)
+            }
+            style={{
+              width: "100%",
+              height: 50,
+              borderRadius: 20,
+              backgroundColor: "tomato",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: 20,
+            }}
+          >
+            <Text style={{ color: "white" }}>Add to wishlist</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  products: state.products,
+});
+
+export default connect(mapStateToProps, { AddToWishlist })(Descriptions);
