@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import { Text, View, SafeAreaView, Image } from "react-native";
+import {
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { Icon } from "native-base";
 import Bottombar from "../components/Bottombar";
 import { connect } from "react-redux";
+import { DeleteFromWishlist } from "../actions/productsActions";
 
 class Wishlist extends Component {
   render() {
@@ -34,6 +41,13 @@ class Wishlist extends Component {
                     {item.Name}
                   </Text>
                 </View>
+                <View style={{ width: "10%", alignItems: "center" }}>
+                  <TouchableOpacity
+                    onPress={() => this.props.DeleteFromWishlist(item)}
+                  >
+                    <Text>Delete</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             ))}
           </View>
@@ -61,4 +75,4 @@ const mapStateToProps = (state) => ({
   products: state.products,
 });
 
-export default connect(mapStateToProps)(Wishlist);
+export default connect(mapStateToProps, { DeleteFromWishlist })(Wishlist);

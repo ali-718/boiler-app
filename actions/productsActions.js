@@ -4,3 +4,10 @@ export const AddToWishlist = (data) => (dispatch) => {
     payload: data,
   });
 };
+
+export const DeleteFromWishlist = (data) => (dispatch) => {
+  dispatch({
+    type: "DELTE_FROM_WISHLIST",
+    payload: data,
+  });
+};
